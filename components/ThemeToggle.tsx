@@ -1,18 +1,15 @@
-"use client"
+"use client";
 
-import { useThemeStore } from "@/lib/store/theme-store"
+import { useThemeStore } from "@/lib/store/theme-store";
+
 
 export default function ThemeToggle() {
-  const { dark, toggle } = useThemeStore()
+  const dark = useThemeStore((s) => s.dark);
+  const toggle = useThemeStore((s) => s.toggle);
 
   return (
-    <button
-      onClick={toggle}
-      className={`px-3 py-2 border rounded-lg text-sm transition ${
-        dark ? "" : "bg-[#171717] text-white"
-      }`}
-    >
+    <button onClick={toggle} className={`px-3 py-2 border rounded ${dark ? "" : "bg-[#171717] text-white"}`}>
       {dark ? "🌙 Dark" : "☀️ Light"}
     </button>
-  )
+  );
 }
